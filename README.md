@@ -36,3 +36,4 @@ curl http://localhost:3000/test/redis
 - PostgreSQL: Tables créées automatiquement
 - Redis: Sessions et cache
 - JWT: Authentification sécurisée
+# fidelipark-server
