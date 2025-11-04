@@ -39,6 +39,9 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Routes d'authentification
+const authRoutes = require('./routes/auth.routes');
+app.use('/api/auth', authRoutes);
 // Test PostgreSQL
 app.get('/test/db', async (req, res) => {
   try {
