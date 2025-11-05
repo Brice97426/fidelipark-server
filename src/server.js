@@ -39,9 +39,15 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Routes d'authentification
+// Routes API
 const authRoutes = require('./routes/auth.routes');
+const merchantRoutes = require('./routes/merchant.routes');
+const offerRoutes = require('./routes/offer.routes');
+
 app.use('/api/auth', authRoutes);
+app.use('/api/merchants', merchantRoutes);
+app.use('/api/offers', offerRoutes);
+
 // Test PostgreSQL
 app.get('/test/db', async (req, res) => {
   try {
@@ -104,7 +110,18 @@ app.listen(PORT, HOST, () => {
   console.log('╚════════════════════════════════════════╝');
   console.log(`\n✅ Server: http://${HOST}:${PORT}`);
   console.log(`✅ Environment: ${process.env.NODE_ENV}`);
-  console.log(`✅ Time: ${new Date().toISOString()}\n`);
+  console.log(`✅ Time: ${new Date().toISOString()}`);
+  console.log('\n📋 Routes disponibles:');
+  console.log('   - POST   /api/auth/register/client');
+  console.log('   - POST   /api/auth/register/merchant');
+  console.log('   - POST   /api/auth/login');
+  console.log('   - GET    /api/merchants');
+  console.log('   - GET    /api/merchants/:id');
+  console.log('   - GET    /api/offers');
+  console.log('   - GET    /api/offers/available');
+  console.log('   - POST   /api/offers');
+  console.log('   - PUT    /api/offers/:id');
+  console.log('   - DELETE /api/offers/:id\n');
 });
 
 process.on('SIGTERM', () => {
